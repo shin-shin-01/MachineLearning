@@ -1,0 +1,22 @@
+nav {
+    color: #FFFFFF;
+    background-color: rgb(48, 43, 43);
+}
+
+body {
+    background-color: rgba(250, 248, 248, 0.514);
+}
+
+.gray {
+    background-color: rgba(201, 194, 194, 0.26);
+}
+
+.btn {
+    color: #FFFFFF;
+    background-color: rgb(48, 43, 43);
+}
+
+input {
+    color: #FFFFFF;
+    background-color: rgb(48, 43, 43);
+}

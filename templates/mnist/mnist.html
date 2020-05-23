@@ -5,31 +5,82 @@ MNIST
 {% endblock %}
 
 {% block content %}
+
+
+<form action="" method="post" enctype="multipart/form-data">
+
 <div class="row">
-    <form action="" method="POST" enctype="multipart/form-data">
-        <input type="file" name="img">
-        <input type="submit" id="submit" value="SUBMIT" />
-    </form>
+  <div class="col s12 m6 offset-m3 card gray">
+    <div class="card-content">
+      <span class="card-title">MNIST digit recognition : Learning->28*28pixcel</span>
+      <p>
+        {% if ans == None %}
+          画像を入力してください
+        {% elif ans == "Error" %}
+          Error : 正しい画像を読み込んでください
+        {% endif %}
+      </p>
+    </div>
+    <div class="input-field col s12 m8">
+      <input type="file" name="img" class="a">
+    </div>
+    <div class="input-field col s12 m4">
+      <button class="btn waves-effect waves-light" type="submit" id="submit" value="SUBMIT">
+        Submit <i class="material-icons right">send</i>
+      </button>
+    </div>
+  </div>
 </div>
 
-{% if ans == None %}
-    画像を入力してください
-{% elif ans == "Error" %}
-    Error : 正しい画像を読み込んでください
+
+{% if reqimage == None %}
 {% else %}
-    入力した画像は....{{ ans }}です！
+<div class="row">
+  <div class="col s12 m4 offset-m4">
+    <div class="card">
+      <div class="card-image">
+        <img src="{{url_for('static', filename='mnist/'+reqimage)}} " style="height: 250px; background-size: contain;">
+      </div>
+      <div class="card-content center-align">
+        <p>入力された画像の結果は「{{ reqimage[0] }}」です</p>
+      </div>
+    </div>
+  </div>
+</div>
 {% endif %}
 
-本日の結果
-{% if images %}
-  {% for path in images %}
-    {% if ".png" in path or ".jpg" in path %}
-    <div>
-      <img src="{{url_for('static', filename='mnist/'+path)}}" style="margin-top: 10px; vertical-align: bottom; width: 200px;">
-      この画像の結果：{{ path[0] }}
-    </div>
-    {% endif %}
-  {% endfor %}
-{% endif %}
+
+<div class="row">
+  <div class="col s12 m6 offset-m3 card">
+    <h5 class="center-align">本日の診断結果</h5>
+  </div>
+</div>
+
+<div class="row">
+  {% if images %}
+    {% for path in images %}
+      {% if ".png" in path or ".jpg" in path %}
+      <div class="col s12 m3">
+        <div class="card">
+          <div class="card-image">
+            <img src="{{url_for('static', filename='mnist/'+path)}} " style="height: 200px; background-size: contain;">
+          </div>
+          <div class="row card-content">
+            <div class="col s12 m8">
+              この画像の結果：{{ path[0] }}
+            </div>
+            <label class="col s12 m4">
+              <input type="checkbox" name="{{ path }}"/><span>削除</span>
+            </label>  
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</div>
+
+
+</form>
 
 {% endblock %}
