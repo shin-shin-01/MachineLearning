@@ -1,6 +1,4 @@
 *.ipynb_checkpoints*
-*.png*
-*.jpg*
 *.DS_Store*
 *__pycache__*
 static/mnist
