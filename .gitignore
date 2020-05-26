@@ -2,4 +2,5 @@
 *.DS_Store*
 *__pycache__*
 static/mnist/*.png
-static/mnist/*.img
+static/mnist/*.jpg
+/learning/test-image/*.jpg
