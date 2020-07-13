@@ -18,6 +18,10 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
+@app.route('/test', methods=['GET', 'POST'])
+def test():
+    return 'test'
+
 @app.route('/mnist', methods=['GET', 'POST'])
 def mnist():
     ans = None
