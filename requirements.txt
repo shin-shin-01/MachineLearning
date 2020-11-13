@@ -4,7 +4,7 @@ gunicorn==20.0.4
 Jinja2==2.10.3
 Keras==2.3.1
 opencv-python==4.2.0.34
-tensorflow==1.14.0
+tensorflow==2.3.1
 pandas
 numpy
 datetime
